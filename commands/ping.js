@@ -1,5 +1,10 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, Client } = require('discord.js');
 const { joinVoiceChannel } = require('@discordjs/voice');
+
+
+
+const { createAudioPlayer, NoSubscriberBehavior,createAudioResource } = require('@discordjs/voice');
+
 
 
 module.exports = {
@@ -8,14 +13,24 @@ module.exports = {
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
 
+
         console.log("Pinged")
+
+        const player = createAudioPlayer({
+            behaviors: {
+                noSubscriber: NoSubscriberBehavior.Pause,
+            },
+        });
+        const resource = createAudioResource('./m.mp3');
+        player.play(resource);
 		// await interaction.reply('Pong!');
         const voiceConnection = joinVoiceChannel({
-            channelId: "976631025683816462",
-            guildId:"976631025683816458",
+            channelId: "838512527095627806",
+            guildId:interaction.guildId,
             adapterCreator:interaction.guild.voiceAdapterCreator ,
         });
-        console.log("should have connected",voiceConnection)
+        console.log("should have connected")
+        voiceConnection.subscribe(player);
 
         // connection.
 

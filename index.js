@@ -15,7 +15,9 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 console.log(commandFiles)
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates
+    ] });
 client.commands = new Collection();
 
 for (const file of commandFiles) {
@@ -82,6 +84,8 @@ for (const file of eventFiles) {
 // 	guildId: process.env.guildId,
 // 	adapterCreator: channel.guild.voiceAdapterCreator,
 // });
+
+const { joinVoiceChannel } = require('@discordjs/voice');
 
 
 
