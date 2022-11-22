@@ -1,3 +1,6 @@
 config.json
 node_modules/
 .env
+DB/var.txt
+DB/X509-cert-5839513926272490111.pem
+DB/cert.pem
