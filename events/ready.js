@@ -1,12 +1,15 @@
 const { Events } = require("discord.js");
 const { joinVoiceChannel } = require("@discordjs/voice");
-const { connectToDB } = require("./../DB/db");
+const { connectToDB, setUpDb } = require("./../DB/db");
 module.exports = {
   name: Events.ClientReady,
   once: true,
-  execute(client) {
+  async execute(client) {
     console.log(`Ready! Logged in as ${client.user.tag} test mode`);
-    console.log(connectToDB);
-    connectToDB();
+    // console.log(connectToDB);
+    console.log("tadaaa\n\n\n\n\n");
+    console.log(client);
+    await connectToDB();
+    await setUpDb();
   },
 };

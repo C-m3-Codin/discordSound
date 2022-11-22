@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 let { music } = require("../Constants/musicConstants.js");
 const { joinVoiceChannel } = require("@discordjs/voice");
-
+const { getDBJson } = require("./../DB/db");
 const {
   createAudioPlayer,
   NoSubscriberBehavior,
@@ -23,7 +23,8 @@ module.exports = {
   async execute(interaction) {
     const usr = await interaction.guild.members.cache.get(interaction.user.id);
     console.log(usr);
-
+    var jsonDb = await getDBJson("asdasd");
+    console.log(jsonDb);
     console.log("voice channel ?", usr.voice.channel);
     if (usr.voice.channel) {
       const player = createAudioPlayer({
