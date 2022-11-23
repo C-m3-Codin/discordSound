@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { setA, music } = require("../Constants/musicConstants.js");
-
+const { addMusicToTile } = require("./../DB/db");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("setsong")
@@ -19,9 +19,9 @@ module.exports = {
     ),
   async execute(interaction) {
     console.log(music);
-    setA(
+    addMusicToTile(
+      interaction.guildId,
       interaction.options.getString("tile"),
-      interaction.options.getString("name"),
       interaction.options.getString("link")
     );
     console.log(music);
