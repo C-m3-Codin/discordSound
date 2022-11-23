@@ -18,7 +18,7 @@ module.exports = {
 
     var command;
     if (interaction.isButton()) {
-      console.log(music);
+      // console.log(music);
 
       command = interaction.client.commands.get("play");
     } else {
@@ -33,7 +33,7 @@ module.exports = {
     }
 
     try {
-      console.log(command);
+      // console.log(command);
       await command.execute(interaction);
     } catch (error) {
       console.error(`Error executing ${interaction.commandName}`);

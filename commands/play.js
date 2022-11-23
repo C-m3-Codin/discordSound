@@ -22,19 +22,23 @@ module.exports = {
 
   async execute(interaction) {
     const usr = await interaction.guild.members.cache.get(interaction.user.id);
-    console.log(usr);
-    var jsonDb = await getDBJson("asdasd");
-    console.log(jsonDb);
-    console.log("voice channel ?", usr.voice.channel);
+    // console.log(usr);
+    var jsonDb = await getDBJson(interaction.guildId);
+    console.log(interaction.guildId);
+    console.log();
+    // console.log("voice channel ?", usr.voice.channel);
     if (usr.voice.channel) {
       const player = createAudioPlayer({
         behaviors: {
           noSubscriber: NoSubscriberBehavior.Pause,
         },
       });
-
+      console.log(
+        "music url",
+        jsonDb["button"][interaction.customId]["resource"]
+      );
       const resource = createAudioResource(
-        music[interaction.customId]["resource"]
+        jsonDb["button"][interaction.customId]["resource"]
       );
 
       player.play(resource);
@@ -50,6 +54,13 @@ module.exports = {
       player.on(AudioPlayerStatus.Idle, () => {
         setTimeout(() => {
           //   message.channel.send('<:Bye:958269757541466145> **Queue finished... Leaving!**')
+
+          console.log(
+            "playing",
+            AudioPlayerStatus.Playing,
+            " idle ",
+            AudioPlayerStatus.Idle
+          );
           voiceConnection.disconnect();
         }, 5000);
       });

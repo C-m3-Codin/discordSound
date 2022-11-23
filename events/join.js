@@ -7,7 +7,7 @@ module.exports = {
   async execute(guild) {
     console.log(`Joined ${guild.name} server`);
     // console.log(connectToDB);
-    console.log("tadaaa\n\n\n\n\n");
+    console.log("Joined guild Id");
     console.log(guild.id);
     await setUpDb(guild.id);
   },

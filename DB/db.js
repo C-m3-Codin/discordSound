@@ -8,6 +8,7 @@ const client = new MongoClient(uri);
 
 module.exports.connectToDB = async function () {
   try {
+    console.log("Connecting to DB..");
     await client.connect();
     const database = client.db("testDB");
     const collection = database.collection("testCol");
@@ -16,12 +17,11 @@ module.exports.connectToDB = async function () {
     // perform actions using client
   } finally {
     // Ensures that the client will close when you finish/error
-    console.log("gonna close");
+
     // await client.close();
-    console.log("closed");
+    console.log("Connected");
     // return
   }
-  console.log("exiting");
 };
 
 module.exports.getDBJson = async function (channelId) {
