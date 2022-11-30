@@ -44,7 +44,12 @@ module.exports.setUpDb = async function (guildId) {
   return doc;
 };
 
-module.exports.addMusicToTile = async function (guildId, buttonNumber, url) {
+module.exports.addMusicToTile = async function (
+  guildId,
+  buttonNumber,
+  url,
+  name
+) {
   const database = client.db("testDB");
   const collection = database.collection("testCol");
 
@@ -57,7 +62,7 @@ module.exports.addMusicToTile = async function (guildId, buttonNumber, url) {
   var res = `button.${buttonNumber}.resource`;
   const updateDoc = {
     $set: {
-      [buttonNam]: "Name",
+      [buttonNam]: name,
       [res]: url,
     },
   };

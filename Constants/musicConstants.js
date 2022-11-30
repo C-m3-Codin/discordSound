@@ -1,6 +1,6 @@
 music = {
   1: {
-    name: "1",
+    name: "1aaaa",
     resource:
       "https://cdn.discordapp.com/attachments/976631025683816461/1043856070952620072/videoplayback.mp3",
   },

@@ -16,13 +16,20 @@ module.exports = {
         .setName("link")
         .setDescription("The input to echo back")
         .setRequired(true)
+    )
+    .addStringOption((option) =>
+      option
+        .setName("label")
+        .setDescription("Name of the tile")
+        .setRequired(true)
     ),
   async execute(interaction) {
     console.log(music);
     addMusicToTile(
       interaction.guildId,
       interaction.options.getString("tile"),
-      interaction.options.getString("link")
+      interaction.options.getString("link"),
+      interaction.options.getString("label")
     );
     console.log(music);
     console.log(interaction.options.getString("link"));
