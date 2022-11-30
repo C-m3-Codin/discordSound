@@ -35,5 +35,6 @@ module.exports = {
     console.log(interaction.options.getString("link"));
     // interaction.guild is the object representing the Guild in which the command was run
     await interaction.reply(`This music is set on tile.`);
+    setTimeout(() => interaction.deleteReply(), 2000);
   },
 };

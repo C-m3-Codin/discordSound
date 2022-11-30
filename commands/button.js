@@ -28,14 +28,20 @@ module.exports = {
     for (let i = 0; i < 4; i++) {
       // text += cars[i] + "<br>";
       row1.components[i].setLabel(jsonDb["button"][`${i + 1}`]["name"]);
+      if (jsonDb["button"][`${i + 1}`]["resource"] == "Banana") {
+        row1.components[i].setDisabled(true);
+      }
     }
     for (let i = 4; i < 8; i++) {
       // text += cars[i] + "<br>";
       row2.components[i - 4].setLabel(jsonDb["button"][`${i + 1}`]["name"]);
+      if (jsonDb["button"][`${i + 1}`]["resource"] == "Banana") {
+        row2.components[i - 4].setDisabled(true);
+      }
     }
 
     await interaction.reply({
-      content: "I think you should,",
+      content: "welcome to Your Soundboard",
       components: [row1, row2],
     });
     // connection.

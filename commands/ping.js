@@ -14,21 +14,10 @@ module.exports = {
   async execute(interaction) {
     console.log("Pinged");
 
-    const player = createAudioPlayer({
-      behaviors: {
-        noSubscriber: NoSubscriberBehavior.Pause,
-      },
+    await interaction.reply({
+      content: "pong",
     });
-    const resource = createAudioResource("./m.mp3");
-    player.play(resource);
-    // await interaction.reply('Pong!');
-    const voiceConnection = joinVoiceChannel({
-      channelId: "838512527095627806",
-      guildId: interaction.guildId,
-      adapterCreator: interaction.guild.voiceAdapterCreator,
-    });
-    console.log("should have connected");
-    voiceConnection.subscribe(player);
+    setTimeout(() => interaction.deleteReply(), 2000);
 
     // connection.
   },
