@@ -1,10 +1,12 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const fs = require("fs");
 const { music } = require("./../Constants/musicConstants");
+require("dotenv").config({ path: "./../.env" });
+console.log(process.env);
 // const credentials = './cert.pem'
-const uri =
-  "mongodb+srv://root_cp_pass:Mamaijustroot_cp_pass@cluster0.iaquulw.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.dbUser}:${process.env.dbPass}@cluster0.iaquulw.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
+console.log(uri);
 
 module.exports.connectToDB = async function () {
   try {
@@ -53,9 +55,6 @@ module.exports.addMusicToTile = async function (
   const database = client.db("testDB");
   const collection = database.collection("testCol");
 
-  // create a filter for a movie to update
-  // const filter = { _id: guildId };
-  // this option instructs the method to create a document if no documents match the filter
   const options = { upsert: true };
   // create a document that sets the plot of the movie
   var buttonNam = `button.${buttonNumber}.name`;
